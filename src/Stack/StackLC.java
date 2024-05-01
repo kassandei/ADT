@@ -1,16 +1,21 @@
 package Stack;
 import nodo.Node;
+import objectcloner.ObjectCloner;
 
 public class StackLC implements Stack {
-    private Node head;
-    private int counter;
+    protected Node head;
+    protected int counter;
 
     public StackLC() {
         head = null;
         counter = 0;
     }
 
-    //public StackLC(StackLC stack) {}
+    public StackLC(StackLC stack) {
+        StackLC tmp = (StackLC) stack.clone();
+        head = tmp.head;
+        counter = tmp.counter;
+    }
 
     @Override
     public void push(Object obj) {
@@ -46,7 +51,7 @@ public class StackLC implements Stack {
     @Override
     public boolean isFull() {
         return false;
-    }
+    } // Assuming it can never be full
 
     @Override
     public int nElem() {
@@ -59,10 +64,10 @@ public class StackLC implements Stack {
         counter = 0;
     }
 
-    //     public Object clone()
-    //    {
-    //        return ObjectCloner.ObjdeepCopy(this);
-    //    }
+    @Override
+    public Object clone() {
+        return ObjectCloner.ObjdeepCopy(this);
+    }
 
     @Override
     public String toString()

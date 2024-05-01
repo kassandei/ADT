@@ -1,10 +1,8 @@
 package Queue;
 
-public class QueueVC extends QueueV implements Queue {
+public class QueueVC extends QueueV {
     Object[] vettore;
-    public static int DEF_MAX_ELEM = 10;
     private int head;
-    private int coda;
 
     public QueueVC(int maxElem) {
         vettore = new Object[maxElem];
@@ -16,8 +14,9 @@ public class QueueVC extends QueueV implements Queue {
         this(DEF_MAX_ELEM);
     }
 
-    public QueueVC(QueueVC a) {
-
+    public QueueVC(QueueVC queue) {
+        super(queue);
+        this.head = queue.head;
     }
 
     @Override
@@ -66,7 +65,9 @@ public class QueueVC extends QueueV implements Queue {
 
     @Override
     public int nElem() {
-        return (coda+vettore.length-head)%(vettore.length);
+        if(isEmpty())
+            return 0;
+        else return (coda+vettore.length-head)%(vettore.length);
     }
 
     @Override

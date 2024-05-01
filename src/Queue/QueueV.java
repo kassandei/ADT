@@ -1,9 +1,11 @@
 package Queue;
 
+import objectcloner.ObjectCloner;
+
 public class QueueV implements Queue {
     Object[] vettore;
     public static int DEF_MAX_ELEM = 10;
-    private int coda;
+    protected int coda;
 
     public QueueV(int maxElem) {
         vettore = new Object[maxElem];
@@ -14,8 +16,9 @@ public class QueueV implements Queue {
         this(DEF_MAX_ELEM);
     }
 
-    public QueueV(QueueV a) {
-
+    public QueueV(QueueV queue) {
+        QueueV tmp = (QueueV) queue.clone();
+        coda = tmp.coda;
     }
 
     private void compress() {
@@ -70,9 +73,8 @@ public class QueueV implements Queue {
 
     @Override
     public Object clone() {
-        return null;
+        return ObjectCloner.ObjdeepCopy(this);
     }
-
     @Override
     public String toString()
     {

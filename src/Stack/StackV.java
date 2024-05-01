@@ -1,10 +1,12 @@
 package Stack;
 
+import objectcloner.ObjectCloner;
+
 public class StackV implements Stack {
 
-    private Object[] vettore;
-    private static int DEF_MAX_ELEM = 12;
-    private int head;
+    protected Object[] vettore;
+    public static int DEF_MAX_ELEM = 12;
+    protected int head;
 
     public StackV(int maxElem) {
         vettore = new Object[maxElem];
@@ -13,6 +15,11 @@ public class StackV implements Stack {
 
     public StackV() {
         this(DEF_MAX_ELEM);
+    }
+
+    public StackV(StackV stack) {
+        StackV tmp = (StackV) stack.clone();
+        head = tmp.head;
     }
 
     @Override
@@ -57,6 +64,11 @@ public class StackV implements Stack {
     @Override
     public void flush() {
         head = 0;
+    }
+
+    @Override
+    public Object clone() {
+        return ObjectCloner.ObjdeepCopy(this);
     }
 
     @Override

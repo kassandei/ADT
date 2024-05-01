@@ -1,17 +1,25 @@
 package Queue;
 import nodo.Node;
+import objectcloner.ObjectCloner;
 
 import javax.swing.*;
 
 public class QueueLC implements Queue {
-    private Node head;
-    private Node coda;
+    protected Node head;
+    protected Node coda;
     private int counter;
 
     public QueueLC() {
         coda = null;
         head = null;
         counter = 0;
+    }
+
+    public QueueLC(QueueLC queue) {
+        QueueLC tmp = (QueueLC) queue.clone();
+        head = tmp.head;
+        coda = tmp.coda;
+        counter = tmp.counter;
     }
     @Override
     public void enque(Object obj) {
@@ -56,7 +64,7 @@ public class QueueLC implements Queue {
     @Override
     public boolean isFull() {
         return false;
-    }
+    } // Assuming it can never be full
 
     @Override
     public void flush() {
@@ -72,7 +80,7 @@ public class QueueLC implements Queue {
 
     @Override
     public Object clone() {
-        return null;
+        return ObjectCloner.ObjdeepCopy(this);
     }
 
     @Override
