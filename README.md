@@ -20,3 +20,12 @@ The queue data structure has been implemented using arrays and linked lists. Que
 ## Additional Features: List Logic
 
 The current implementations include additional list logic in both array and linked list formats. This allows for the addition and removal of elements at any position within the data structure. This flexibility is beneficial for various applications where access to any element is required without the constraints of strict LIFO or FIFO operations.
+
+## Dependencies
+
+This project requires the following libraries:
+
+- ObjectCloner.jar
+
+You can find it in the lib folder.
+
