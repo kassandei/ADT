@@ -1,4 +1,4 @@
-# Data Structure Implementations
+# Abstract Data Structure Implementations
 
 This README provides an overview of the various data structure implementations included in this project. Each implementation follows specific logic principles and is designed for different use cases.
 
