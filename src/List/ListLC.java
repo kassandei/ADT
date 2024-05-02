@@ -91,7 +91,7 @@ public class ListLC implements List {
 
     @Override
     public boolean hasNext() {
-        return cursore.getNext() != null;
+        return cursore.getNext().getNext() != null;
     }
 
     @Override
@@ -110,7 +110,7 @@ public class ListLC implements List {
             return false;
         else {
             reset();
-            for(int i = 0; i == position; i++) {
+            for(int i = 0; i < position; i++) {
                 moveNext();
             }
             return true;
